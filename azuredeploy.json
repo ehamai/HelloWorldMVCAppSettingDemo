@@ -31,7 +31,8 @@
       "defaultValue": "0"
     },
     "someAppSetting": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": "Test App Setting Value"
     },
     "repoUrl": {
       "type": "string"
