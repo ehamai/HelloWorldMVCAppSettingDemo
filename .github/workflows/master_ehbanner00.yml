@@ -24,7 +24,7 @@ jobs:
     - name: Publish to folder
       #run: msbuild /p:Configuration=Release /p:DeployOnBuild=true /t:WebPublish /p:WebPublishMethod=FileSystem /p:publishUrl=./published/ /p:PackageAsSingleFile=false
       #run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir=".\published\";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false"
-      run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir=".\\published\\"
+      run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\\published\\"
 
     - name: List directory
       run: ls -R
@@ -35,7 +35,7 @@ jobs:
         app-name: 'ehbanner00'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_982ae785982749679bbd5c01cbf7b64a }}
-        package: ./published/
+        package: \\published\\
 
 #    - name: Deploy to Azure WebApp
 #      uses: azure/webapps-deploy@v1
