@@ -24,7 +24,7 @@ jobs:
     - name: Publish to folder
       #run: msbuild /p:Configuration=Release /p:DeployOnBuild=true /t:WebPublish /p:WebPublishMethod=FileSystem /p:publishUrl=./published/ /p:PackageAsSingleFile=false
       #run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir=".\published\";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false"
-      run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir=".\published\";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false" ,,0
+      run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir=".\\published\\";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false"
 
     - name: List directory
       run: ls -R
