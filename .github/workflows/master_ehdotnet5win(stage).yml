@@ -1,0 +1,36 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy ASP app to Azure Web App - ehdotnet5win(stage)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: 'windows-latest'
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Setup MSBuild path
+      uses: microsoft/setup-msbuild@v1.0.0
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+
+    - name: Restore NuGet packages
+      run: nuget restore
+
+    - name: Publish to folder
+      run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'ehdotnet5win'
+        slot-name: 'stage'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b0b885592d49446b8c8603523888a8ab }}
+        package: \published\
