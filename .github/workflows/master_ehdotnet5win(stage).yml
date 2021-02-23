@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: 'windows-latest'
 
     steps:
@@ -27,6 +27,11 @@ jobs:
     - name: Publish to folder
       run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
 
+   
+  deploy:
+    runs-on: 'windows-latest'
+
+    steps:
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
