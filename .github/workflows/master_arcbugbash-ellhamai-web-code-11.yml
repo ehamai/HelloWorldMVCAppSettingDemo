@@ -52,5 +52,5 @@ jobs:
       with:
         app-name: 'arcbugbash-ellhamai-web-code-11'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_ef33586a4d0441e1b6addbba2e2d117e }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6ac6e19ecefb4f8a8898416ce5191523 }}
         package: .
